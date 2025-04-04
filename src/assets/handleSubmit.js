@@ -1,4 +1,4 @@
-const handleSubmit = (event, username, password, masterList, setErrorMessage) => {
+const handleSubmit = (event, username, password, masterList, setErrorMessage, onSuccess) => {
     event.preventDefault();
 
     // Trim whitespace from inputs
@@ -36,9 +36,8 @@ const handleSubmit = (event, username, password, masterList, setErrorMessage) =>
     );
 
     if (user) {
-        alert('Login successful!');
         setErrorMessage(''); // Clear any previous error messages
-        // Redirect or perform further actions here
+        onSuccess();
     } else {
         setErrorMessage('Invalid username or password.');
     }
