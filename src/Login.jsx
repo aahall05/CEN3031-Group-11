@@ -4,15 +4,18 @@ import logo from './assets/Logo FINAL.png';
 import masterList from './assets/masterList.js';
 import handleSubmit from './assets/handleSubmit.js'; 
 
-const Login = () => {
+const Login = ({onLoginSuccess}) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
+    const handleFormSubmit = (e) => {
+        handleSubmit(e, username, password, masterList, setErrorMessage, onLoginSuccess);
+ }
 
     return (
         <div className="container">
             <img src={logo} alt="Logo" className="login-logo" />
-            <form onSubmit={(e) => handleSubmit(e, username, password, masterList, setErrorMessage)}>
+            <form onSubmit={handleFormSubmit}>
                 <div>
                     <label htmlFor="username">Username:</label>
                     <input
