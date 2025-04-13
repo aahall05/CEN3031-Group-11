@@ -2,12 +2,24 @@ import React, { useEffect, useState, useRef } from 'react';
 
 const GOOGLE_MAPS_API_KEY = 'AIzaSyBm8XXU3Qw-q50E14PnXRHKAT-u_fLmE24'; // Replace with your actual key
 
-const Map = () => {
+const Map = ({ onLogout }) => {
     const [ipAddress, setIpAddress] = useState(null);
     const [location, setLocation] = useState(null);
     const [loading, setLoading] = useState(true);
     const mapRef = useRef(null);
-
+    
+    const logoutButtonStyle = {
+        position: 'absolute',
+        top: '20px',        
+        right: '20px',       
+        padding: '8px 15px',
+        cursor: 'pointer',
+        backgroundColor: '#f44336',
+        color: 'white',
+        border: 'none',
+        borderRadius: '4px',
+        fontSize: '14px',
+     };
     // Load Google Maps script dynamically
     const loadGoogleMapsScript = () => {
         return new Promise((resolve) => {
@@ -62,6 +74,9 @@ const Map = () => {
 
     return (
         <div style={{ textAlign: 'center', marginTop: '30px' }}>
+            <button style={logoutButtonStyle} onClick={onLogout}>
+                Logout
+            </button>
             <h1>Welcome to the Map Page!</h1>
             <p>Your Public IP Address: <strong>{ipAddress || 'Loading...'}</strong></p>
             <p>Below is your approximate location based on your IP address:</p>
