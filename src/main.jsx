@@ -5,16 +5,22 @@ import Login from './Login.jsx'
 import { useState } from 'react';
 import RedirectPage from './Redirectpage.jsx';
 import Map from './components/Map.jsx';
+import Resources from './components/Resources.jsx';
 
 const Main = () => {
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    // Initialize isLoggedIn from sessionStorage
+    const [isLoggedIn, setIsLoggedIn] = useState(() =>{
+        return sessionStorage.getItem('isLoggedIn') === 'true';
+    });
 
     const handleLoginSuccess = () => {
         setIsLoggedIn(true);
+        sessionStorage.setItem('isLoggedIn', 'true'); // Record login state
     };
 
     const handleLogout = () => {
-        setIsLoggedIn(false);
+        setIsLoggedIn(false);        
+        sessionStorage.removeItem('isLoggedIn'); // Clear login state
         window.location.href = '/';
     };
 
@@ -27,10 +33,21 @@ const Main = () => {
             </StrictMode>
         );
     }
+    else if (currentPath === '/resources') {
+        return (
+            <StrictMode>
+                <Resources onLogout={handleLogout}/>
+            </StrictMode>
+        );
+    }
 
     return (
         <StrictMode>
-            {isLoggedIn ? <RedirectPage onLogout={handleLogout} /> : <Login onLoginSuccess={handleLoginSuccess} />}
+            {isLoggedIn ? (
+                <RedirectPage onLogout={handleLogout} />
+            ) : (
+                <Login onLoginSuccess={handleLoginSuccess} />
+            )}
         </StrictMode>
     )
 }

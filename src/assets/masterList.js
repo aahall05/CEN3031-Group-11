@@ -10,6 +10,7 @@ const masterList = [
     { username: 'jane_doe', password: 'janedoe123' },
     { username: 'superuser', password: 'superpass' },
     { username: 'tester', password: 'testpass' },
+    { username: 'a', password: 'a' },
 ];
 
 export default masterList;
