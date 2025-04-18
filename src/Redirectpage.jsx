@@ -20,7 +20,11 @@ const RedirectPage = ({ onLogout }) => {
     }
 
     const buttonContainerStyle = {
-        marginTop: '30px'
+        marginTop: '30px',
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center',
+        gap: '10px'
         
     }
     
@@ -38,8 +42,7 @@ const RedirectPage = ({ onLogout }) => {
      }
 
     const handleResourcesClick = () => {
-        alert('Resources button clicked!');
-        
+        window.location.href = '/resources';
     }
 
     const handleDatabaseClick = () => {
@@ -52,24 +55,18 @@ const RedirectPage = ({ onLogout }) => {
 
     return (
         <div style={pageStyle}>
-            <button style={logoutButtonStyle} onClick={onLogout}>
-               Logout
-            </button>
+            <button style={logoutButtonStyle} onClick={onLogout}>Logout</button>
+           
             <img src={logo} alt="Logo" style={logoStyle} />
             <h1>Welcome!</h1>
             <p>You have successfully logged in.</p>
+            
             <div style={buttonContainerStyle}>
-                <button onClick={handleResourcesClick}>
-                    Resources
-            </button>
-            <button onClick={handleDatabaseClick}>
-                Database
-            </button>
-            <button onClick={handleMapRedirect}>
-                Map
-            </button>
+                <button onClick={handleResourcesClick}>Resources</button>
+                <button onClick={handleDatabaseClick}>Database</button>
+                <button onClick={handleMapRedirect}>Map</button>
+            </div>
         </div>
-    </div>
   )
 }
 
