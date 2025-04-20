@@ -2,7 +2,7 @@ import React from 'react';
 import logo from './assets/Logo FINAL.png';
 import './Login.css'; 
 
-const RedirectPage = ({ onLogout }) => {
+const RedirectPage = ({ onLogout, username }) => {
     const pageStyle = {
         display: 'flex',
         flexDirection: 'column',
@@ -58,7 +58,7 @@ const RedirectPage = ({ onLogout }) => {
             <button style={logoutButtonStyle} onClick={onLogout}>Logout</button>
            
             <img src={logo} alt="Logo" style={logoStyle} />
-            <h1>Welcome!</h1>
+            <h1>Welcome {username}!</h1>
             <p>You have successfully logged in.</p>
             
             <div style={buttonContainerStyle}>

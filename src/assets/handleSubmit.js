@@ -37,7 +37,7 @@ const handleSubmit = (event, username, password, masterList, setErrorMessage, on
 
     if (user) {
         setErrorMessage(''); // Clear any previous error messages
-        onSuccess();
+        onSuccess(user);
     } else {
         setErrorMessage('Invalid username or password.');
     }
