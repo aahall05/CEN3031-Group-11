@@ -63,7 +63,7 @@ const RedirectPage = ({ onLogout }) => {
             
             <div style={buttonContainerStyle}>
                 <button onClick={handleResourcesClick}>Resources</button>
-                <button onClick={handleDatabaseClick}>Database</button>
+                {/*<button onClick={handleDatabaseClick}>Database</button>*/}
                 <button onClick={handleMapRedirect}>Map</button>
             </div>
         </div>
